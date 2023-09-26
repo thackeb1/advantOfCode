@@ -69,12 +69,8 @@ int read_puzzle_input (struct Round** r_ptr[], FILE* fp ){
     {
  
         
-        if(0==num_of_rnds){
-            (*r_ptr)[num_of_rnds]->mv1=line[0];
-            (*r_ptr)[num_of_rnds]->mv2=line[2];
-
-        }
-        else{
+        
+        if(0!= num_of_rnds){
            
             struct Round** tmp = realloc(*r_ptr,(num_of_rnds+1)* sizeof(struct Round*));
             if(NULL == tmp){
@@ -83,11 +79,12 @@ int read_puzzle_input (struct Round** r_ptr[], FILE* fp ){
             }
             *r_ptr = tmp;
             init_round(&(*r_ptr)[num_of_rnds]);
-            (*r_ptr)[num_of_rnds]->mv1=line[0];
-            (*r_ptr)[num_of_rnds]->mv2=line[2];
-            (*r_ptr)[num_of_rnds]->rnd=num_of_rnds;
-            
         }
+        (*r_ptr)[num_of_rnds]->mv1=line[0];
+        (*r_ptr)[num_of_rnds]->mv2=line[2];
+        (*r_ptr)[num_of_rnds]->rnd=num_of_rnds;
+            
+        
         rnd_res(&(*r_ptr)[num_of_rnds]);
         new_rnd_res(&(*r_ptr)[num_of_rnds]);
         num_of_rnds++;

@@ -32,7 +32,7 @@ if(2 > argc ){
     
     uint32_t** test_mat = NULL;
   
-    //check_overlap1(&pair_coverage2,num_of_pairs*2,2);
+    check_overlap1(&pair_coverage2,num_of_pairs*2,2);
     check_overlap2(&pair_coverage2,num_of_pairs*2,2);
 
 }
@@ -159,7 +159,15 @@ int check_overlap2(uint32_t** p_mat_ptr[], uint32_t m, uint32_t n){
         ordered_pair[1][0] = (*p_mat_ptr)[i+1][0];
         ordered_pair[1][1] = (*p_mat_ptr)[i+1][1];
         order_coverage(&ordered_pair,2);
-       
+
+        for(int j = ordered_pair[1][0]; j <= ordered_pair[1][1]; j++ ){
+            if(j >= ordered_pair[0][0] && j<= ordered_pair[0][1]){
+                num_of_pairs++;
+
+                break;
+            }
+        }
+               
     }
 
     printf("Number of pairs is %d\n",num_of_pairs);

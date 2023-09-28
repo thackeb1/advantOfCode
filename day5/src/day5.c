@@ -193,6 +193,7 @@ int execute_moves(struct Crate_Stack* s_ptr[],uint32_t* m_mat_ptr[], uint32_t m,
         }
         
     }
+ 
 }
 
 int execute_moves2(struct Crate_Stack* s_ptr[],uint32_t* m_mat_ptr[], uint32_t m, uint32_t n){
@@ -204,9 +205,8 @@ int execute_moves2(struct Crate_Stack* s_ptr[],uint32_t* m_mat_ptr[], uint32_t m
         for (int j = 0; j<m_mat_ptr[i][0];j++){
             push(s_ptr[(m_mat_ptr[i][2]-1)]->crates, pop(tmp));
         }
-        
-        
     }
+    free(tmp);
 }
 
 
